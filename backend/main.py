@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from routers.user import user_router
+
+from backend.routers.user import user_router
 
 app = FastAPI()
 
