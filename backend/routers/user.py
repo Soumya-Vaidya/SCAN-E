@@ -3,9 +3,11 @@ from typing import Union
 
 user_router = APIRouter()
 
+
 @user_router.get("/users")
 def get_users():
     return {"message": "List of users"}
+
 
 @user_router.get("/")
 def read_root():
