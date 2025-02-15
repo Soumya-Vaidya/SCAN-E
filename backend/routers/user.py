@@ -13,7 +13,9 @@ async def init_db():
     client = AsyncIOMotorClient(
         "mongodb+srv://udaypatil92:OBBarylILAhUBIPI@cluster0.kkzm9.mongodb.net/"
     )
-    await init_beanie(database=client["sample_mflix"], document_models=[Users])
+    await init_beanie(
+        database=client["sample_mflix"], document_models=[Users], skip_indexes=True
+    )
 
 
 # Register the startup event at the app level

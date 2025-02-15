@@ -9,4 +9,4 @@ class Users(Document):
     password: Optional[str] = None
 
     class Settings:
-        name = "comments"
+        name = "users"
