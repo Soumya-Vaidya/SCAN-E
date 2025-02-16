@@ -4,15 +4,14 @@ from beanie import init_beanie
 from fastapi import APIRouter
 from motor.motor_asyncio import AsyncIOMotorClient
 
+from backend.main import settings
 from backend.models.users import Users
 
 user_router = APIRouter()
 
 
 async def init_db():
-    client = AsyncIOMotorClient(
-        "mongodb+srv://udaypatil92:OBBarylILAhUBIPI@cluster0.kkzm9.mongodb.net/"
-    )
+    client = AsyncIOMotorClient(settings.MONGO_URL)
     await init_beanie(
         database=client["sample_mflix"], document_models=[Users], skip_indexes=True
     )
