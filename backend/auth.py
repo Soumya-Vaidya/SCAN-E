@@ -1,7 +1,9 @@
+import os
 from datetime import datetime, timedelta, timezone
 
 import bcrypt
 import jwt
+from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.security import (
     HTTPAuthorizationCredentials,
@@ -10,10 +12,11 @@ from fastapi.security import (
 from jwt.exceptions import InvalidTokenError
 from pydantic import BaseModel
 
+load_dotenv()
 security = HTTPBearer()
 # to get a string like this run:
 # openssl rand -hex 32
-SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 100
 
