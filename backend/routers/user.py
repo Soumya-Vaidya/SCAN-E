@@ -38,7 +38,7 @@ async def startup_event():
     await init_db()
 
 
-@user_router.post("/users/", summary="Create a new user")
+@user_router.post("", summary="Create a new user")
 async def create_user(email: str, name: str, password: str):
     user = Users(name=name, email=email, password=get_password_hash(password))
     db_user = await Users.insert(user)
@@ -65,7 +65,7 @@ async def login_for_access_token(
     return Token(access_token=access_token, token_type="bearer")
 
 
-@user_router.get("/users/me/", response_model=CurrentUser)
+@user_router.get("me", response_model=CurrentUser)
 async def read_users_me(
     current_user: Annotated[CurrentUser, Depends(get_current_user)],
 ):
