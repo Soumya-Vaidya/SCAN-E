@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 class LineItems(BaseModel):
     name: str
-    cost: List[str]
+    cost: float
 
 
 class Reciepts(Document):
